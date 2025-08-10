@@ -8,7 +8,6 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "DealFlow - Business Acquisition Platform",
   description: "Connect buyers and sellers for seamless business acquisitions",
-    generator: 'v0.dev'
 }
 
 export default function RootLayout({

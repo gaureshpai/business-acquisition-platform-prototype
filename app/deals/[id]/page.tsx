@@ -76,9 +76,7 @@ export default function DealPage({ params }: { params: { id: string } }) {
 
   const runAiAnalysis = () => {
     setAiAnalysisComplete(true)
-    // Simulate AI analysis
     setTimeout(() => {
-      // Analysis complete
     }, 2000)
   }
 
@@ -88,7 +86,7 @@ export default function DealPage({ params }: { params: { id: string } }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <Link href="/dashboard">
-              <Button variant="ghost" size="sm">
+              <Button variant="ghost" size="sm" className="cursor-pointer">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Dashboard
               </Button>
@@ -102,10 +100,12 @@ export default function DealPage({ params }: { params: { id: string } }) {
             <Badge variant="secondary" className="bg-blue-100 text-blue-800">
               Phase {currentPhase} of 6
             </Badge>
+            <Link href={`/profile`}>
             <Avatar>
               <AvatarImage src="/placeholder.svg?height=32&width=32" />
               <AvatarFallback>SC</AvatarFallback>
             </Avatar>
+            </Link>
           </div>
         </div>
       </header>
@@ -155,10 +155,10 @@ export default function DealPage({ params }: { params: { id: string } }) {
           <div className="lg:col-span-2 space-y-6">
             <Tabs defaultValue="overview" className="w-full">
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="overview">Overview</TabsTrigger>
-                <TabsTrigger value="documents">Documents</TabsTrigger>
-                <TabsTrigger value="ai-insights">AI Insights</TabsTrigger>
-                <TabsTrigger value="communication">Messages</TabsTrigger>
+                <TabsTrigger className="cursor-pointer" value="overview">Overview</TabsTrigger>
+                <TabsTrigger className="cursor-pointer" value="documents">Documents</TabsTrigger>
+                <TabsTrigger className="cursor-pointer" value="ai-insights">AI Insights</TabsTrigger>
+                <TabsTrigger className="cursor-pointer" value="communication">Messages</TabsTrigger>
               </TabsList>
 
               <TabsContent value="overview" className="space-y-6">

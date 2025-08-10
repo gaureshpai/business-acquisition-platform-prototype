@@ -119,7 +119,7 @@ export default function OnboardingPage() {
             <Link href={`/onboarding/${selectedRole}`}>
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8"
+                className="bg-gradient-to-r cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 px-8"
               >
                 Continue as {selectedRole === "buyer" ? "Buyer" : "Seller"}
                 <ArrowRight className="w-4 h-4 ml-2" />

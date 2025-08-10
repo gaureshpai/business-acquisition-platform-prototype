@@ -14,25 +14,21 @@ import { ArrowRight, ArrowLeft, Building2 } from "lucide-react"
 export default function BuyerOnboarding() {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
-    // Personal Info
     firstName: "",
     lastName: "",
     title: "",
     company: "",
     phone: "",
 
-    // Investment Profile
     investmentRange: "",
     preferredIndustries: [] as string[],
     geographicPreference: "",
     timeframe: "",
 
-    // Experience & Goals
     acquisitionExperience: "",
     businessGoals: "",
     dealStructure: [] as string[],
 
-    // Financial Capacity
     liquidCapital: "",
     financingNeeded: "",
     creditScore: "",
@@ -69,7 +65,6 @@ export default function BuyerOnboarding() {
     if (currentStep < totalSteps) {
       setCurrentStep(currentStep + 1)
     } else {
-      // Complete onboarding
       window.location.href = "/dashboard"
     }
   }
@@ -156,6 +151,7 @@ export default function BuyerOnboarding() {
                     <Input
                       id="firstName"
                       value={formData.firstName}
+                      placeholder="e.g., John"
                       onChange={(e) => setFormData((prev) => ({ ...prev, firstName: e.target.value }))}
                     />
                   </div>
@@ -163,6 +159,7 @@ export default function BuyerOnboarding() {
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input
                       id="lastName"
+                      placeholder="e.g., Doe"
                       value={formData.lastName}
                       onChange={(e) => setFormData((prev) => ({ ...prev, lastName: e.target.value }))}
                     />
@@ -181,6 +178,7 @@ export default function BuyerOnboarding() {
                   <Label htmlFor="company">Current Company (Optional)</Label>
                   <Input
                     id="company"
+                    placeholder="e.g., Your Company Name"
                     value={formData.company}
                     onChange={(e) => setFormData((prev) => ({ ...prev, company: e.target.value }))}
                   />
@@ -189,6 +187,7 @@ export default function BuyerOnboarding() {
                   <Label htmlFor="phone">Phone Number</Label>
                   <Input
                     id="phone"
+                    placeholder="e.g., +91 987-123-4567"
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData((prev) => ({ ...prev, phone: e.target.value }))}
@@ -199,22 +198,22 @@ export default function BuyerOnboarding() {
 
             {currentStep === 2 && (
               <div className="space-y-6">
-                <div className="space-y-2">
+                <div className="space-y-2 cursor-pointer">
                   <Label>Investment Range</Label>
                   <Select
                     value={formData.investmentRange}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, investmentRange: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Select your investment range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="under-500k">Under $500K</SelectItem>
-                      <SelectItem value="500k-1m">$500K - $1M</SelectItem>
-                      <SelectItem value="1m-5m">$1M - $5M</SelectItem>
-                      <SelectItem value="5m-10m">$5M - $10M</SelectItem>
-                      <SelectItem value="10m-25m">$10M - $25M</SelectItem>
-                      <SelectItem value="25m-plus">$25M+</SelectItem>
+                      <SelectItem value="under-500k" className="cursor-pointer">Under $500K</SelectItem>
+                      <SelectItem value="500k-1m" className="cursor-pointer">$500K - $1M</SelectItem>
+                      <SelectItem value="1m-5m" className="cursor-pointer">$1M - $5M</SelectItem>
+                      <SelectItem value="5m-10m" className="cursor-pointer">$5M - $10M</SelectItem>
+                      <SelectItem value="10m-25m" className="cursor-pointer">$10M - $25M</SelectItem>
+                      <SelectItem value="25m-plus" className="cursor-pointer">$25M+</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -227,9 +226,10 @@ export default function BuyerOnboarding() {
                         <Checkbox
                           id={industry}
                           checked={formData.preferredIndustries.includes(industry)}
+                          className="cursor-pointer"
                           onCheckedChange={(checked) => handleIndustryChange(industry, checked as boolean)}
                         />
-                        <Label htmlFor={industry} className="text-sm">
+                        <Label htmlFor={industry} className="text-sm cursor-pointer">
                           {industry}
                         </Label>
                       </div>
@@ -243,14 +243,14 @@ export default function BuyerOnboarding() {
                     value={formData.geographicPreference}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, geographicPreference: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Where are you looking to invest?" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="local">Local/Regional</SelectItem>
-                      <SelectItem value="national">National</SelectItem>
-                      <SelectItem value="international">International</SelectItem>
-                      <SelectItem value="no-preference">No Preference</SelectItem>
+                      <SelectItem className="cursor-pointer" value="local">Local/Regional</SelectItem>
+                      <SelectItem className="cursor-pointer" value="national">National</SelectItem>
+                      <SelectItem className="cursor-pointer" value="international">International</SelectItem>
+                      <SelectItem className="cursor-pointer" value="no-preference">No Preference</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -261,15 +261,15 @@ export default function BuyerOnboarding() {
                     value={formData.timeframe}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, timeframe: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="When are you looking to invest?" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="immediate">Immediately</SelectItem>
-                      <SelectItem value="3-months">Within 3 months</SelectItem>
-                      <SelectItem value="6-months">Within 6 months</SelectItem>
-                      <SelectItem value="12-months">Within 12 months</SelectItem>
-                      <SelectItem value="exploring">Just exploring</SelectItem>
+                      <SelectItem className="cursor-pointer" value="immediate">Immediately</SelectItem>
+                      <SelectItem className="cursor-pointer" value="3-months">Within 3 months</SelectItem>
+                      <SelectItem className="cursor-pointer" value="6-months">Within 6 months</SelectItem>
+                      <SelectItem className="cursor-pointer" value="12-months">Within 12 months</SelectItem>
+                      <SelectItem className="cursor-pointer" value="exploring">Just exploring</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -284,14 +284,14 @@ export default function BuyerOnboarding() {
                     value={formData.acquisitionExperience}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, acquisitionExperience: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Your experience with business acquisitions" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="first-time">First-time buyer</SelectItem>
-                      <SelectItem value="some-experience">Some experience (1-2 deals)</SelectItem>
-                      <SelectItem value="experienced">Experienced (3-5 deals)</SelectItem>
-                      <SelectItem value="very-experienced">Very experienced (5+ deals)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="first-time">First-time buyer</SelectItem>
+                      <SelectItem className="cursor-pointer" value="some-experience">Some experience (1-2 deals)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="experienced">Experienced (3-5 deals)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="very-experienced">Very experienced (5+ deals)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -314,10 +314,11 @@ export default function BuyerOnboarding() {
                       <div key={structure} className="flex items-center space-x-2">
                         <Checkbox
                           id={structure}
+                          className="cursor-pointer"
                           checked={formData.dealStructure.includes(structure)}
                           onCheckedChange={(checked) => handleDealStructureChange(structure, checked as boolean)}
                         />
-                        <Label htmlFor={structure} className="text-sm">
+                        <Label htmlFor={structure} className="text-sm cursor-pointer">
                           {structure}
                         </Label>
                       </div>
@@ -335,15 +336,15 @@ export default function BuyerOnboarding() {
                     value={formData.liquidCapital}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, liquidCapital: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="How much liquid capital do you have available?" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="under-100k">Under $100K</SelectItem>
-                      <SelectItem value="100k-500k">$100K - $500K</SelectItem>
-                      <SelectItem value="500k-1m">$500K - $1M</SelectItem>
-                      <SelectItem value="1m-5m">$1M - $5M</SelectItem>
-                      <SelectItem value="5m-plus">$5M+</SelectItem>
+                      <SelectItem className="cursor-pointer" value="under-100k">Under $100K</SelectItem>
+                      <SelectItem className="cursor-pointer" value="100k-500k">$100K - $500K</SelectItem>
+                      <SelectItem className="cursor-pointer" value="500k-1m">$500K - $1M</SelectItem>
+                      <SelectItem className="cursor-pointer" value="1m-5m">$1M - $5M</SelectItem>
+                      <SelectItem className="cursor-pointer" value="5m-plus">$5M+</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -354,14 +355,14 @@ export default function BuyerOnboarding() {
                     value={formData.financingNeeded}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, financingNeeded: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Will you need external financing?" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="no-financing">No, all cash</SelectItem>
-                      <SelectItem value="some-financing">Some financing (less than 50%)</SelectItem>
-                      <SelectItem value="significant-financing">Significant financing (50-80%)</SelectItem>
-                      <SelectItem value="mostly-financing">Mostly financing (80%+)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="no-financing">No, all cash</SelectItem>
+                      <SelectItem className="cursor-pointer" value="some-financing">Some financing (less than 50%)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="significant-financing">Significant financing (50-80%)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="mostly-financing">Mostly financing (80%+)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -372,15 +373,15 @@ export default function BuyerOnboarding() {
                     value={formData.creditScore}
                     onValueChange={(value) => setFormData((prev) => ({ ...prev, creditScore: value }))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className="cursor-pointer">
                       <SelectValue placeholder="Your credit score range" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="excellent">Excellent (750+)</SelectItem>
-                      <SelectItem value="good">Good (700-749)</SelectItem>
-                      <SelectItem value="fair">Fair (650-699)</SelectItem>
-                      <SelectItem value="poor">Poor (less than 650)</SelectItem>
-                      <SelectItem value="prefer-not-to-say">Prefer not to say</SelectItem>
+                      <SelectItem className="cursor-pointer" value="excellent">Excellent (750+)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="good">Good (700-749)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="fair">Fair (650-699)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="poor">Poor (less than 650)</SelectItem>
+                      <SelectItem className="cursor-pointer" value="prefer-not-to-say">Prefer not to say</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -395,13 +396,13 @@ export default function BuyerOnboarding() {
             )}
             
             <div className="flex justify-between pt-6">
-              <Button variant="outline" onClick={handleBack} disabled={currentStep === 1}>
+              <Button variant="outline" onClick={handleBack} className="cursor-pointer" disabled={currentStep === 1}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back
               </Button>
               <Button
                 onClick={handleNext}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
+                className="bg-gradient-to-r cursor-pointer from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700"
               >
                 {currentStep === totalSteps ? "Complete Setup" : "Next"}
                 <ArrowRight className="w-4 h-4 ml-2" />

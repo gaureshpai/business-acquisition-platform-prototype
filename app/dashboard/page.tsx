@@ -27,7 +27,6 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import Link from "next/link"
 
-// Mock data for buyer profiles
 const buyerProfiles = [
   {
     id: 1,
@@ -115,80 +114,45 @@ export default function Dashboard() {
   }
 
   const Navigation = () => (
-    <div className="bg-white border-r border-gray-200 w-64 min-h-screen p-4">
-      <div className="space-y-6">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-            <Building2 className="w-5 h-5 text-white" />
-          </div>
-          <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-            DealFlow
-          </h1>
+    <div className="bg-white border-r border-gray-200 w-64 min-h-[1200px] p-4">
+      <div className="flex items-center space-x-2 mb-6">
+        <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
+          <Building2 className="w-5 h-5 text-white" />
         </div>
+        <h1 className="text-lg font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          DealFlow
+        </h1>
+      </div>
 
-        <nav className="space-y-2">
-          <Link href="/dashboard" className="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700">
-            <Users className="w-5 h-5" />
-            <span>Discover Buyers</span>
-          </Link>
-          <Link
-            href="/matches"
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50"
-          >
-            <Heart className="w-5 h-5" />
-            <span>Matches</span>
-            <Badge variant="secondary" className="ml-auto">
-              3
-            </Badge>
-          </Link>
-          <Link
-            href="/messages"
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50"
-          >
-            <MessageCircle className="w-5 h-5" />
-            <span>Messages</span>
-            <Badge variant="secondary" className="ml-auto">
-              2
-            </Badge>
-          </Link>
-          <Link
-            href="/deals"
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50"
-          >
-            <TrendingUp className="w-5 h-5" />
-            <span>Active Deals</span>
-          </Link>
-          <Link
-            href="/profile"
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50"
-          >
-            <User className="w-5 h-5" />
-            <span>My Profile</span>
-          </Link>
-          <Link
-            href="/settings"
-            className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50"
-          >
-            <Settings className="w-5 h-5" />
-            <span>Settings</span>
-          </Link>
-        </nav>
+      <nav className="space-y-2 mb-6">
+        <Link href={"/"} className="flex items-center space-x-3 px-3 py-2 rounded-lg bg-blue-50 text-blue-700 cursor-pointer">
+          <Users className="w-5 h-5" />
+          <span>Discover Buyers</span>
+        </Link>
+        <Link href={"/profile"} className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 cursor-pointer">
+          <User className="w-5 h-5" />
+          <span>My Profile</span>
+        </Link>
+        <Link href={"/settings"} className="flex items-center space-x-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-50 cursor-pointer">
+          <Settings className="w-5 h-5" />
+          <span>Settings</span>
+        </Link>
+      </nav>
 
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
-          <h3 className="font-semibold text-gray-900 mb-2">This Week</h3>
-          <div className="space-y-2 text-sm">
-            <div className="flex justify-between">
-              <span className="text-gray-600">Profile Views</span>
-              <span className="font-medium">24</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">New Matches</span>
-              <span className="font-medium">3</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600">Messages</span>
-              <span className="font-medium">8</span>
-            </div>
+      <div className="bg-gradient-to-r from-blue-50 to-purple-50 p-4 rounded-lg">
+        <h3 className="font-semibold text-gray-900 mb-2">This Week</h3>
+        <div className="space-y-2 text-sm">
+          <div className="flex justify-between">
+            <span className="text-gray-600">Profile Views</span>
+            <span className="font-medium">24</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">New Matches</span>
+            <span className="font-medium">3</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-gray-600">Messages</span>
+            <span className="font-medium">8</span>
           </div>
         </div>
       </div>
@@ -223,13 +187,12 @@ export default function Dashboard() {
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm">
-                <Bell className="w-5 h-5" />
-              </Button>
-              <Avatar>
-                <AvatarImage src="/placeholder.svg?height=32&width=32" />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
+              <Link href="/profile" className="relative">
+                <Avatar>
+                  <AvatarImage src="/placeholder.svg?height=32&width=32" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+              </Link>
             </div>
           </div>
         </header>
@@ -237,9 +200,9 @@ export default function Dashboard() {
         <main className="flex-1 p-6">
           <Tabs defaultValue="discover" className="w-full">
             <TabsList className="grid w-full grid-cols-3 mb-6">
-              <TabsTrigger value="discover">Discover</TabsTrigger>
-              <TabsTrigger value="matches">Matches ({likedProfiles.length})</TabsTrigger>
-              <TabsTrigger value="analytics">Analytics</TabsTrigger>
+              <TabsTrigger value="discover" className="cursor-pointer">Discover</TabsTrigger>
+              <TabsTrigger value="matches" className="cursor-pointer">Matches ({likedProfiles.length})</TabsTrigger>
+              <TabsTrigger value="analytics" className="cursor-pointer">Analytics</TabsTrigger>
             </TabsList>
 
             <TabsContent value="discover" className="space-y-6">
@@ -255,42 +218,42 @@ export default function Dashboard() {
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Investment Range</label>
                       <Select>
-                        <SelectTrigger>
+                        <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Any range" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="any">Any range</SelectItem>
-                          <SelectItem value="under-1m">Under $1M</SelectItem>
-                          <SelectItem value="1m-5m">$1M - $5M</SelectItem>
-                          <SelectItem value="5m-plus">$5M+</SelectItem>
+                          <SelectItem className="cursor-pointer" value="any">Any range</SelectItem>
+                          <SelectItem className="cursor-pointer" value="under-1m">Under $1M</SelectItem>
+                          <SelectItem className="cursor-pointer" value="1m-5m">$1M - $5M</SelectItem>
+                          <SelectItem className="cursor-pointer" value="5m-plus">$5M+</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Experience Level</label>
                       <Select>
-                        <SelectTrigger>
+                        <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Any experience" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="any">Any experience</SelectItem>
-                          <SelectItem value="first-time">First-time</SelectItem>
-                          <SelectItem value="experienced">Experienced</SelectItem>
-                          <SelectItem value="very-experienced">Very experienced</SelectItem>
+                          <SelectItem className="cursor-pointer" value="any">Any experience</SelectItem>
+                          <SelectItem className="cursor-pointer" value="first-time">First-time</SelectItem>
+                          <SelectItem className="cursor-pointer" value="experienced">Experienced</SelectItem>
+                          <SelectItem className="cursor-pointer" value="very-experienced">Very experienced</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Timeline</label>
                       <Select>
-                        <SelectTrigger>
+                        <SelectTrigger className="cursor-pointer">
                           <SelectValue placeholder="Any timeline" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="any">Any timeline</SelectItem>
-                          <SelectItem value="immediate">Immediate</SelectItem>
-                          <SelectItem value="3-months">3 months</SelectItem>
-                          <SelectItem value="6-months">6 months</SelectItem>
+                          <SelectItem className="cursor-pointer" value="any">Any timeline</SelectItem>
+                          <SelectItem className="cursor-pointer" value="immediate">Immediate</SelectItem>
+                          <SelectItem className="cursor-pointer" value="3-months">3 months</SelectItem>
+                          <SelectItem className="cursor-pointer" value="6-months">6 months</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -303,7 +266,7 @@ export default function Dashboard() {
               </Card>
 
               {currentProfile && (
-                <div className="max-w-2xl mx-auto">
+                <div className="mx-auto">
                   <Card className="overflow-hidden shadow-lg">
                     <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50">
                       <div className="flex items-start justify-between">
@@ -424,7 +387,7 @@ export default function Dashboard() {
                         <Button
                           variant="outline"
                           size="lg"
-                          className="flex-1 border-red-200 text-red-600 hover:bg-red-50 bg-transparent"
+                          className="flex-1 border-red-200 cursor-pointer text-red-600 hover:bg-red-50 bg-transparent"
                           onClick={handlePass}
                         >
                           <X className="w-5 h-5 mr-2" />
@@ -432,13 +395,13 @@ export default function Dashboard() {
                         </Button>
                         <Button
                           size="lg"
-                          className="flex-1 bg-gradient-to-r from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
+                          className="flex-1 bg-gradient-to-r cursor-pointer from-green-600 to-green-700 hover:from-green-700 hover:to-green-800"
                           onClick={handleLike}
                         >
                           <Heart className="w-5 h-5 mr-2" />
                           Interested
                         </Button>
-                        <Button variant="outline" size="lg" onClick={() => setShowProfileDetail(true)}>
+                        <Button variant="outline" size="lg" className="cursor-pointer" onClick={() => setShowProfileDetail(true)}>
                           View Full Profile
                         </Button>
                       </div>
@@ -501,10 +464,6 @@ export default function Dashboard() {
                               </div>
                             </div>
                             <div className="flex space-x-2">
-                              <Button size="sm">
-                                <MessageCircle className="w-4 h-4 mr-2" />
-                                Message
-                              </Button>
                               <Link href={`/deals/${profile.id}`}>
                                 <Button size="sm" variant="outline">
                                   Start Deal

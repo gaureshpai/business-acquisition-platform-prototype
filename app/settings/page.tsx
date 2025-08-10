@@ -26,7 +26,7 @@ export default function SettingsPage() {
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
-            <Link href="/dashboard">
+            <Link href="/dashboard" className="cursor-pointer">
               <Button variant="ghost" size="sm">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Dashboard
@@ -40,7 +40,7 @@ export default function SettingsPage() {
         </div>
       </header>
 
-      <div className="p-6 max-w-4xl mx-auto">
+      <div className="p-12 mx-auto">
         <Tabs defaultValue="profile" className="w-full">
           <TabsList className="grid w-full grid-cols-5">
             <TabsTrigger value="profile">Profile</TabsTrigger>
